@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+<body>
+{% block content %}
+<h3>Add a New book{{msg}}</h3>
+<form action="/action_page.php">
+  <label for="bname">Book Name:</label><br>
+  <input type="text" id="bname" name="bname" value=""><br>
+  <label for="lname">Author:</label><br>
+  <input type="text" id="lname" name="lname" value=""><br>
+  <label for="City">Publish Year:</label><br>
+  <input type="text" id="City" name="City" value=""><br>
+  <label for="Age">Loaned:</label><br>
+  <input type="text" id="Age" name="Age" value=""><br>
+  <input type="submit" value="Submit">
+</form> 
+</body>
+{% endblock %}

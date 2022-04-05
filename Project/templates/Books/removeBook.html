@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Remove a book- {{msg}}</h1>
+<form action="" method="post">
+  author:<input name="authour" required minlength="2">
+  type: <input type="number" name="type">
+  <input type="submit">
+</form>  
+{% endblock %}
+

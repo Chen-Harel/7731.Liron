@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{%block head%} {{ super() }} {%endblock%}
+{%block content%}
+
+
+<div class="row row-cols-1 row-cols-md-6 g-4">
+  {%for book in books%}
+  <div class="col">
+    <div class="card">
+      <img src="https://picsum.photos/2/2" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{book.Name}}</h5>
+        <p class="card-text">Author: {{book.Author}}<br>
+          Type: {{book.Type}}<br>
+          Year: {{book.Year}}<br>
+          id: {{book.id}}</p>    
+        <button type="button" class="btn btn-primary">Loan</button>
+        <a href="/removBook?id=/{{book.id}}&author{{book.Author}}" type="button" class="btn btn-danger">Remove</a>
+      </div>
+    </div>
+  </div>
+  {%endfor%}
+</div>
+
+{% endblock %}
+
+
