@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{%block head%} {{ super() }} {%endblock%}
+{%block content%}
+<h1>OUR CLUBBERS</h1>
+<div class="row row-cols-1 row-cols-md-6 g-4">
+  {%for customer in customers%}
+  <div class="col">
+    <div class="card">
+      <img src="https://picsum.photos/200" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Name: {{customer.Name}}</h5>
+        <p class="card-text">City:{{customer.City}}<br>
+          Age: {{customer.Age}}<br>
+          id: {{customer.id}}</p>    
+        <a href="/Customers/allCustomers?id={{customer.id}}" type="button" class="btn btn-danger">Remove</a>
+      </div>
+    </div>
+  </div>
+  {%endfor%}
+</div>
+
+{% endblock %}
+
+

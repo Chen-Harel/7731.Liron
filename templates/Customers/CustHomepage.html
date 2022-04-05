@@ -1,18 +1,16 @@
 {% extends "layout.html" %}
-<body>
 {% block content %}
-<h3>Add a New Clubber{{msg}}</h3>
-<form action="/action_page.php">
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname" value="John"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname" value="Doe"><br>
-  <label for="City">City:</label><br>
-  <input type="text" id="City" name="City" value="Tel Aviv"><br>
-  <label for="Age">Age:</label><br>
-  <input type="text" id="Age" name="Age" value="23"><br>
+<body>
+<h3>ADD A NEW CLUBBER{{msg}}</h3>
+<form action="/Customers/allCustomers" method="POST">
+  <label for="custName">First Name:</label><br>
+  <input type="text" id="Name" name="custName" value="John"><br>
+  <label for="custCity">City:</label><br>
+  <input type="text" id="City" name="custCity" value="Tel Aviv"><br>
+  <label for="custAge">Age:</label><br>
+  <input type=int id="Age" name="custAge" value=23><br>
   <input type="submit" value="Submit">
 </form> 
-<p></p>
 </body>
 {% endblock %}
+

@@ -1,14 +1,35 @@
 {% extends "layout.html" %}
-{% block title %}Index{% endblock %}
-{% block head %}
-  {{ super() }}
-  <style type="text/css">
-    .important { color: #336699; }
-  </style>
-{% endblock %}
 {% block content %}
-  <h1>Index</h1>
-  <p class="important">
-    Welcome to my awesome homepage.
+<body>
+<h3>SEARCH YOUR BOOK{{msg}}</h3>
+<form action="/Books/findBooksByName" method="POST">
+  <label for="bookName">Book Name:</label><br>
+  <input type="text" id="Name" name="bookName" value="The Alchemist"><br>
+  <input type="submit" value="Submit">
+</form>
+<div>
+    <table>
+        <tr>
+            <th>BookID</th>
+            <th>BookName</th>
+            <th>Author</th>
+            <th>Year</th>
+            <th>Type</th>
+        </tr>
+        {% for book in books %}
+        <tr>
+            <td>{{book[0]}}</td>
+            <td>{{book[1]}}</td>
+            <td>{{book[2]}}</td>
+            <td>{{book[3]}}</td>
+            <td>{{book[4]}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+</body>
 {% endblock %}
+
 

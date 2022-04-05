@@ -1,0 +1,36 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<body>
+<h3>SEARCH CLUBBER{{msg}}</h3>
+<form action="/Customers/findCustomersByName" method="POST">
+<label for="custName">First name:</label><br>
+<input type="text" id="Name" name="custName" value="John"><br>
+<input type="submit" value="Submit">
+</form>
+<div>
+  <table>
+      <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>City</th>
+          <th>Age</th>
+      </tr>
+      {% for cust in cust %}
+      <tr>
+          <td>{{cust[0]}}</td>
+          <td>{{cust[1]}}</td>
+          <td>{{cust[2]}}</td>
+          <td>{{cust[3]}}</td>
+      </tr>
+      {% endfor %}
+  </table>
+
+</div>
+
+</body>
+{% endblock %}
+
+
+
+

@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+<html>
+  <head>
+{% block head %}
+  {{ super() }}
+  <style>
+    body {
+      background-image: url('../Static/b7.jpg');
+    }
+  </style>
+  </head>
+{% endblock %}
+<body>
+{% block content %}
+<p style="background-image: url('../Static/b7.jpg');">
+{% block title %}
+<h1>WELCOME TO THE BOOK CLUB LIBRARY</h1>
+{% endblock %}
+<h3>The Perfect Place for Book Lovers</h3>
+More than 30,000 books<br>
+with more than 30,000 breathtaking stories<br>
+and one magical world of fantasy.<br>
+Already a member? Go grabb a book!<br>
+Want to join the club? click here><br>
+</p>
+{% endblock %}
+</body>

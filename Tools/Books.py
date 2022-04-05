@@ -16,14 +16,13 @@ class Book:
             res.append({"id": i[0], "Name": i[1], "Author": i[2], "Year": i[3], "Type": i[4]})
         return render_template("/Books/bookHomepage.html", books=res)
 
-    
     def addBook(self):
         msg=""
         if request.method=='POST':
-            bName = request.form.get('bookName')
+            bName = request.form.get('Name')
             bAuthor = request.form.get('Author')
-            bYear = request.form.get('year')
-            bType = request.form.get('bookType')
+            bYear = request.form.get('Year')
+            bType = request.form.get('Type')
             Loaned=request.form.get('Loaned')
             SQL=(f'''INSERT INTO Books VALUES("{bName}", "{bAuthor}", {int(bYear)}, {int(bType)}, "{Loaned}")''')
             print(SQL)
@@ -33,18 +32,20 @@ class Book:
                     msg=f"The book ... {bAuthor} has been added to the list"
             con.commit()
             return render_template("/Books/addBook.html")
+        return render_template("/Books/addBook.html")
 
     def removeBook(self):
-        if request.method=='GET':
-            bName = request.args.get('bookName')
-            bookID = request.args.get('bookID')
-        SQL=f'''DELETE FROM Books where rowid={bookID}'''
-        cur.execute(SQL) 
-        con.commit() 
-        print(SQL)
-        msg=f"The book ... {bName} has been removed from the list"
-        return render_template("GET/Books/removeBook.html")
-
+        if request.method=='post':
+            bName = request.args.get('Name')
+            bookID = request.args.get('id')
+            print(bookID)
+            SQL=f'''DELETE FROM Books where rowid={bookID}'''
+            cur.execute(SQL) 
+            con.commit() 
+            print(SQL)
+            msg=f"The book ... {bName} has been removed from the list"
+            return render_template("/Books/bookHomepage.html")
+        return render_template("/Books/bookHomepage.html")
 
     # def updateBook(self):
     #     SQLUPD=f"UPDATE Books set Type=4 where rowid={bookID}"
@@ -55,18 +56,15 @@ class Book:
     #     if request.method=='POST':
     #         return render_template("/Books/removeBook.html")
 
-
-
-        
-
     def findBook(self):
         if request.method=='POST':
             bookName = request.form.get('bookName')
-            sql = (f'''SELECT * FROM Books where bookName like "%{bookName}%"''')
+            sql = (f'''SELECT * FROM Books where Name like "%{bookName}%"''')
             cur.execute(sql)
             books = cur.fetchall()
-            # return render_template("/books/findBook.html", books=books)
-        return render_template("/Books/findBook.html")
+            return render_template("/Books/findBooksByName.html",books=books)
+        return render_template("/Books/findBooksByName.html")
+
 
     def bookHomepage(self):
         if request.method=='POST':

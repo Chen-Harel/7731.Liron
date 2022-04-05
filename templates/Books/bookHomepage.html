@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
 {%block head%} {{ super() }} {%endblock%}
 {%block content%}
-
-
+<h1>OUR BOOKS</h1>
 <div class="row row-cols-1 row-cols-md-6 g-4">
   {%for book in books%}
   <div class="col">
@@ -15,7 +14,7 @@
           Year: {{book.Year}}<br>
           id: {{book.id}}</p>    
         <button type="button" class="btn btn-primary">Loan</button>
-        <a href="/removBook?id=/{{book.id}}&author{{book.Author}}" type="button" class="btn btn-danger">Remove</a>
+        <a href="/Books/bookHomepage?id={{book.id}}" type="button" class="btn btn-danger">Remove</a>
       </div>
     </div>
   </div>
